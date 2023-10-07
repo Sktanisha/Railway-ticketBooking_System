@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>show train</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static 'showtrain/css/style.css' %}" />
+  </head>
+
+  <body>
+    <h1>Available Trains</h1>
+    <p>Train Details</p>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Train Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Total seat</th>
+            <th>Available seat</th>
+            <th>Arrival Time</th>
+            
+            <th></th>
+          </tr>
+        </thead>
+        <form class="post-form" action="" method="POST" id="showtrain_form">
+          {% csrf_token %}
+          <tbody>
+            {% for show in showtrainsinfo %}
+            <tr>
+              <td name="train_name" data-title="Train Name" type="text">
+                {{show.1}}
+              </td>
+              <td name="source" data-title="from" type="text">{{show.5}}</td>
+              <td name="destination" data-title="to" type="text">{{show.6}}</td>
+              <td name="seats" data-title="Total seat" type="text">{{show.2}}</td>
+              <td name="availableseats" data-title="available seat" type="text">
+                {{avl.0.0}}
+              </td>
+              <td name="arrivetime" data-title="arrive time" type="text">
+                {{show.8}}
+              </td>
+              
+              <td class="select">
+                <button
+                  type="button"
+                  class="button"
+                  onclick="location.href='/ticket_pur/{{show.0}}/'"
+                >
+                  PURCHASE
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </form>
+      </table>
+    </main>
+  </body>
+</html>

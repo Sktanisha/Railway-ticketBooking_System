@@ -1,0 +1,184 @@
+
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Railway Booking</title>
+</head>
+<style>
+    body {
+        background: url(https://images.unsplash.com/photo-1588127727253-e5f2faf4f541?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+        /* background-image: url(https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701304779-692x376.jpg)
+        background-size: cover;
+        background-position: center; */
+    }
+
+    .booking-form-box{
+        max-width: 500px;
+        border: 1px solid #000408;
+        margin: 10% auto 0;
+    }
+    .booking-form{
+        padding: 20px 20px 20px 20px;
+    }
+    .booking-form label{
+        margin-bottom: 5px;
+        margin-top: 10px;
+        font-size: 20px;
+        color: #000408;
+    }
+    /* input::placeholder{
+        color: #fff !important;
+    } */
+    .input-grp{
+        width: 200px;
+        display: inline-block;
+    }
+    /* .form-control{
+        font-size: 12px !important;
+        border-radius: 0 !important;
+        color: #000408 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    } */
+    .select-date::-webkit-inner-spin-button,
+    .select-date::-webkit-outer-spin-button
+    {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .select-date.select-date::-webkit-calender-picker-indicator{
+        background: transparent;
+    }
+    .select{
+        color: #000408 !important;
+        font-size: 12px !important;
+        border: 1px solid #000408 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+    .select option{
+        color: #333;
+    }
+
+    .rail{
+        width: 450px;
+        padding: 9px 9px;
+        font-size: 12px;
+        border: 1px solid #ced4da !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+    .rail:hover{
+        background: #fff !important;
+        color: #000 !important;
+        transition: 0.5s;
+    }
+</style>
+
+<body>
+    <div class="booking-form-box">
+        <div class="booking-form">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            <!-- <div class=></div> -->
+            <div class="input-grp">
+            <label>From</label>
+            <label for="source" class="label"></label>
+            <!-- <input for="source" class="form-control"></input> -->
+				<select id="source" class="select" name="source" required="true">
+					<option value="Dhaka">Dhaka</option>
+					<option value="Chittagong">Chittagong</option>
+					<option value="Abdullahpur">Abdullahpur</option>
+					<option value="Biman_bandar">Biman_bandar</option>
+					<option value="Feni">Feni</option>
+					<option value="Gaibandha">Gaibandha</option>
+					<option value="Islampur">Islampur</option>
+					<option value="Jessore">Jessore</option>
+					<option value="Khulna">Khulna</option>
+					<option value="Laksam">Laksam</option>
+					<option value="Mymensingh">Mymensingh</option>
+					<option value="Noakhali">Noakhali</option>
+					<option value="Rajshahi">Rajshahi</option>
+					<option value="Sylhet">Sylhet</option>
+                </select>
+            </div>
+
+            <div class="input-grp">
+                <label>To</label>
+                <label for="destination" class="label"></label>
+            <!-- <label for="destination" class="form-control">TO</label> -->
+							<select id="destion" class="select" name="destination" required="true">
+								<option value="Dhaka">Dhaka</option>
+								<option value="Chittagong">Chittagong</option>
+								<option value="Abdullahpur">Abdullahpur</option>
+								<option value="Biman_bandar">Biman_bandar</option>
+								<option value="Feni">Feni</option>
+								<option value="Gaibandha">Gaibandha</option>
+								<option value="Islampur">Islampur</option>
+								<option value="Jessore">Jessore</option>
+								<option value="Khulna">Khulna</option>
+								<option value="Laksam">Laksam</option>
+								<option value="Mymensingh">Mymensingh</option>
+								<option value="Noakhali">Noakhali</option>
+								<option value="Rajshahi">Rajshahi</option>
+								<option value="Sylhet">Sylhet</option>
+                            </select>
+            </div>
+
+            <div class="input-grp">
+                <label>Date</label>
+                <label for="date" class="label"></label>
+                <!-- <label for="date" class="form-control">DATE</label> -->
+					<input type="date" id="dest" class="select" name="doj" required="true"></input>
+            </div>
+
+            <div class="input-grp">
+                <label>Person</label>
+                <label for="person" class="label"></label>
+                <!-- <label for="person" class="form-control">Person</label> -->
+							<select type="person" id="des" class="select" name="nofperson" required="true">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>
+            </div>
+
+            <div class="input-grp">
+                <button type="submit" class="btn-btn-primary rail"> Show Trains</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

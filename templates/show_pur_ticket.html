@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'showtrain/css/style.css' %}" />
+    <title>Purchase Tickets</title>
+  </head>
+  <body>
+    <h1>Purchase Details</h1>
+    <p>All Tickets</p>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Train Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Arrival Time</th>
+            <th>Total seat</th>
+            <th>Total fare</th>
+            <th>Date of journey</th>
+            
+            <th></th>
+          </tr>
+        </thead>
+        <form class="post-form" action="" method="POST" id="showtrain_form">
+          {% csrf_token %}
+          <tbody>
+            {% for tickets in mytickets %}
+            <tr>
+              <td name="train_name" data-title="Train Name" type="text">
+                {{tickets.train_name}}
+              </td>
+              <td name="source" data-title="from" type="text">{{tickets.source}}</td>
+              <td name="destination" data-title="to" type="text">{{tickets.destination}}</td>
+              <td name="arrivetime" data-title="Total seat" type="text">
+                {{tickets.arrivetime}}
+              </td>
+              <td name="nofperson" data-title="available seat" type="text">
+                {{tickets.nofperson}}
+              </td>
+              <td name="totalfare" data-title="arrive time" type="text">
+                {{tickets.totalfare}}
+              </td>
+              <td name="doj" data-title="arrive time" type="text">
+                {{tickets.doj}}
+              </td>
+              <td class="select">
+                <button
+                  type="button"
+                  class="button"
+                  onclick="location.href='/pdf_download/{{tickets.id}}/'"
+                >
+                  DOWNLOAD PDF
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </form>
+      </table>
+    </main>
+    
+  </body>
+</html>
